@@ -9,7 +9,9 @@ router.get('/search', async (req, res) =>
       depart: req.query.depart,
       arrive: req.query.arrive,
       time: req.query.time,
-      transport: req.query.transport
+      transport: req.query.transport,
+      minP: req.query.minP,
+      maxP: req.query.maxP
     })
   )
 )

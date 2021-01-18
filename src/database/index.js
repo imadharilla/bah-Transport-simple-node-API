@@ -57,6 +57,54 @@ exports.seedVoyages = async () => {
           {
             depart: stations[i],
             arrive: station,
+            heureDepart: '15:00',
+            heureArrive: '12:23',
+            transport: transports[1]
+          },
+          {
+            depart: stations[i],
+            arrive: station,
+            heureDepart: '16:00',
+            heureArrive: '18:30',
+            transport: transports[1],
+            price: 26
+          },
+          { upsert: true }
+        )
+        .exec()
+
+      this.model('Voyage')
+        .findOneAndUpdate(
+          {
+            depart: stations[i],
+            arrive: station,
+            heureDepart: '16:00',
+            heureArrive: '19:00',
+            transport: transports[2]
+          },
+          {
+            depart: stations[i],
+            arrive: station,
+            heureDepart: '13:00',
+            heureArrive: '15:00',
+            transport: transports[2],
+            price: 49
+          },
+          { upsert: true }
+        )
+        .exec()
+    })
+  }
+
+  for (let i = 0; i < stations.length; i++) {
+    stations.map(station => {
+      if (station._id == stations[i]._id) return
+
+      this.model('Voyage')
+        .findOneAndUpdate(
+          {
+            depart: stations[i],
+            arrive: station,
             heureDepart: '16:00',
             heureArrive: '18:30',
             transport: transports[0]
@@ -66,7 +114,8 @@ exports.seedVoyages = async () => {
             arrive: station,
             heureDepart: '16:00',
             heureArrive: '18:30',
-            transport: transports[0]
+            transport: transports[0],
+            price: 80
           },
           { upsert: true }
         )
@@ -86,7 +135,8 @@ exports.seedVoyages = async () => {
             arrive: station,
             heureDepart: '13:00',
             heureArrive: '15:00',
-            transport: transports[0]
+            transport: transports[0],
+            price: 100
           },
           { upsert: true }
         )

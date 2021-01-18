@@ -6,7 +6,8 @@ const VoyageSchema = new Schema(
     arrive: { type: Schema.Types.ObjectId, ref: 'Station' },
     heureDepart: String, // "07:30"
     heureArrive: String, // "08:30"
-    transport: { type: String, enum: ['taxi', 'bus', 'train'] }
+    transport: { type: String, enum: ['taxi', 'bus', 'train'] },
+    price: Number
   },
   {
     versionKey: false,
